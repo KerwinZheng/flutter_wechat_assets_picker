@@ -556,6 +556,10 @@ class AssetPicker extends StatelessWidget {
                     provider.unSelectAsset(asset);
                   } else {
                     provider.selectAsset(asset);
+                    //选中视频后直接退出
+                    if(asset.type == AssetType.video){
+                      Navigator.of(context).pop(provider.selectedAssets);
+                    }
                   }
                 },
                 child: AnimatedContainer(

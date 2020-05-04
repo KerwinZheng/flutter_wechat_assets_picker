@@ -271,6 +271,7 @@ class AssetPickerProvider extends ChangeNotifier {
 
     _set.add(item);
     selectedAssets = _set;
+
   }
 
   /// Un-select asset.
