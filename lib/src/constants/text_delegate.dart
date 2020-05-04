@@ -50,6 +50,12 @@ abstract class TextDelegate {
   /// This is used in video asset item in picker, in order to display the duration of the asset.
   /// 该字段用在选择器视频部件上，用于显示视频资源的时长。
   String videoIndicatorBuilder(Duration duration);
+
+  //上传的视频不能超过15秒提示
+  String videoTips;
+
+  //图片和视频不能同时上传
+  String notPictureAndVideo;
 }
 
 class DefaultTextDelegate implements TextDelegate {
@@ -100,4 +106,10 @@ class DefaultTextDelegate implements TextDelegate {
         '${((duration - Duration(minutes: duration.inMinutes)).inSeconds).toString().padLeft(2, '0')}';
     return '$minute$separator$second';
   }
+
+  @override
+  String notPictureAndVideo = '不能同时上传视频和图片';
+
+  @override
+  String videoTips = '视频长度不能大于15秒';
 }

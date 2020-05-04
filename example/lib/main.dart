@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
 import 'package:example/color_extension.dart';
@@ -16,14 +17,14 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return OKToast(child:  MaterialApp(
       title: 'WeChat Asset Picker Demo',
       theme: ThemeData(
         primarySwatch: themeColor.swatch,
         cursorColor: themeColor,
       ),
       home: const MyHomePage(),
-    );
+    ));
   }
 }
 

@@ -6,7 +6,9 @@ import 'dart:math' as math;
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:photo_manager/photo_manager.dart';
+import 'package:wechat_assets_picker/src/constants/constants.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
 /// [ChangeNotifier] for assets picker.
@@ -255,7 +257,18 @@ class AssetPickerProvider extends ChangeNotifier {
     if (selectedAssets.length == maxAssets || selectedAssets.contains(item)) {
       return;
     }
+
     final List<AssetEntity> _set = List<AssetEntity>.from(selectedAssets);
+    if(_set.isNotEmpty && _set[0].type != item.type){
+      showToast(Constants.textDelegate.notPictureAndVideo);
+      return;
+    }
+
+    if(item.type == AssetType.video && item.duration >15){
+      showToast(Constants.textDelegate.videoTips);
+      return;
+    }
+
     _set.add(item);
     selectedAssets = _set;
   }
