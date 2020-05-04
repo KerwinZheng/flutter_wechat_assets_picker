@@ -557,7 +557,7 @@ class AssetPicker extends StatelessWidget {
                   } else {
                     provider.selectAsset(asset);
                     //选中视频后直接退出
-                    if(asset.type == AssetType.video){
+                    if(asset.type == AssetType.video && provider.selectedAssets.contains(asset)){
                       Navigator.of(context).pop(provider.selectedAssets);
                     }
                   }
