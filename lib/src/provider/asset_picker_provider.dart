@@ -22,6 +22,7 @@ class AssetPickerProvider extends ChangeNotifier {
     this.pathThumbSize = 80,
     this.requestType = RequestType.image,
     List<AssetEntity> selectedAssets,
+    this.maxVideoDuration = 15,
   }) {
     if (selectedAssets?.isNotEmpty ?? false) {
       _selectedAssets = List<AssetEntity>.from(selectedAssets);
@@ -44,6 +45,9 @@ class AssetPickerProvider extends ChangeNotifier {
   /// Request assets type.
   /// 请求的资源类型
   final RequestType requestType;
+
+  ///上传视频最大时长
+  final int maxVideoDuration;
 
   /// Clear all fields when dispose.
   /// 销毁时重置所有内容
@@ -264,8 +268,8 @@ class AssetPickerProvider extends ChangeNotifier {
       return;
     }
 
-    if(item.type == AssetType.video && item.duration >15){
-      showToast(Constants.textDelegate.videoTips);
+    if(item.type == AssetType.video && item.duration > maxVideoDuration){
+      showToast(Constants.textDelegate.videoTips.replaceFirst('/s1', maxVideoDuration.toString()));
       return;
     }
 

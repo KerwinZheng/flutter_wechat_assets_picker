@@ -111,5 +111,5 @@ class DefaultTextDelegate implements TextDelegate {
   String notPictureAndVideo = '不能同时上传视频和图片';
 
   @override
-  String videoTips = '视频长度不能大于15秒';
+  String videoTips = '视频长度不能大于/s1秒';
 }

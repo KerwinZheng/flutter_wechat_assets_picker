@@ -65,6 +65,7 @@ class AssetPicker extends StatelessWidget {
     TextDelegate textDelegate,
     Curve routeCurve = Curves.easeIn,
     Duration routeDuration = const Duration(milliseconds: 500),
+    int maxVideoDuration = 15,
   }) async {
     assert(
       pageSize % gridCount == 0 || pageSize == null,
@@ -79,6 +80,7 @@ class AssetPicker extends StatelessWidget {
           pathThumbSize: pathThumbSize,
           selectedAssets: selectedAssets,
           requestType: requestType,
+          maxVideoDuration: maxVideoDuration,
         );
         final Widget picker = AssetPicker(
           key: key,
